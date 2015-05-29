@@ -22,7 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!e2mfht*_mo5gfjbc$jm=rtke4ku)bq$+3x7dn346=ed@diba&'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+LOGIN_REDIRECT_URL = '/'
 
 
 # Application definition
@@ -74,10 +76,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 USE_I18N = True
 USE_L10N = True
-
 USE_TZ = True
 TIME_ZONE = 'America/Montreal'
 
@@ -100,7 +100,6 @@ DATABASES['default'] =  dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = 'staticfiles'
 
