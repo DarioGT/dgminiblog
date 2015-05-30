@@ -92,13 +92,16 @@ STATIC_URL = '/static/'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-import dj_database_url
-
-
 DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Db HEROKU 
+try:
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+except ImportError:
+    pass
 
 
 STATIC_ROOT = 'staticfiles'
