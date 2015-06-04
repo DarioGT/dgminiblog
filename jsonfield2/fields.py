@@ -32,6 +32,8 @@ class JSONField(six.with_metaclass(models.SubfieldBase, models.Field)):
     }
     description = "JSON object"
 
+    __metaclass__ = models.SubfieldBase
+
     def __init__(self, *args, **kwargs):
         if not kwargs.get('null', False):
             kwargs['default'] = kwargs.get('default', dict)
