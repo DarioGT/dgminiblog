@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jsonfield2',
-    'taggit', 
+    'taggit',
+    'reversion',  
     'blog',
 )
 
@@ -50,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'audit_log.middleware.UserLoggingMiddleware', 
 )
 
 ROOT_URLCONF = 'mysite.urls'

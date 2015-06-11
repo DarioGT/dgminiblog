@@ -4,6 +4,7 @@ from django.utils import timezone
 from jsonfield2.fields import JSONField
 
 from taggit.managers import TaggableManager
+from audit_log.models.managers import AuditLog
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -16,7 +17,7 @@ class Post(models.Model):
     sm_upd_date = models.DateTimeField(auto_now=True)
     sm_add_date = models.DateTimeField(auto_now_add=True)
 
-    tags = TaggableManager()
+    tags = TaggableManager( blank=True )
 
     def publish(self):
         self.published_date = timezone.now()
@@ -36,6 +37,8 @@ class Comment(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default=False)
 
+    audit_log = AuditLog()
+    
     def approve(self):
         self.approved = True
         self.save()
