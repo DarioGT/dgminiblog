@@ -3,6 +3,8 @@ from django.utils import timezone
 
 from jsonfield2.fields import JSONField
 
+from taggit.managers import TaggableManager
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
@@ -13,6 +15,8 @@ class Post(models.Model):
 
     sm_upd_date = models.DateTimeField(auto_now=True)
     sm_add_date = models.DateTimeField(auto_now_add=True)
+
+    tags = TaggableManager()
 
     def publish(self):
         self.published_date = timezone.now()
